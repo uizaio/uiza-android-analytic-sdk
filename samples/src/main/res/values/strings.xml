@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">uiza-android-analytic-sdk</string>
+    <string name="tracking">Tracking!</string>
 </resources>
