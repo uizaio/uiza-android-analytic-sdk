@@ -1,0 +1,3 @@
+rootProject.name='uiza-android-analytic-sdk'
+include ':samples'
+include ':uzanalytic'
