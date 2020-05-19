@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">uiza-android-analytic-sdk</string>
     <string name="tracking">Tracking!</string>
+    <string name="uz_live_views_url">https://development-api.uizadev.io</string>
 </resources>
