@@ -1,2 +1,2 @@
-# uiza-android-analytic-sdk
-AnalyticSDK
+# uiza-android-api-sdk
+APISDK
