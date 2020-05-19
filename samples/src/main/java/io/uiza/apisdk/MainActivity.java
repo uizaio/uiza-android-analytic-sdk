@@ -29,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getLiveViews() {
+        String appId = "b963b465c34e4ffb9a71922442ee0dca";
         String entityId = "b938c0a6-e9bc-4b25-9e66-dbf81d755c25";
-        UZApi.getLiveViewers(entityId, res -> {
+        UZApi.getLiveViewers(appId, entityId, res -> {
             Timber.e("Client views: %d", res.getViews());
             txtInfo.setText(String.format(Locale.getDefault(), "Views: %d", res.getViews()));
         }, Timber::e, () -> Timber.e("Completed"));
