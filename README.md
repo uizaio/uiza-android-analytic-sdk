@@ -49,3 +49,12 @@ Read [CHANGELOG here](https://github.com/uizaio/uiza-android-api-sdk/blob/master
 
 ```
 
+or
+
+```java
+
+    UZApi.getLiveViewers(<link_play>, liveCounter -> {
+    		Timber.e("Views: %d", liveCounter.getViews());
+    	}, Timber:e);
+
+```
