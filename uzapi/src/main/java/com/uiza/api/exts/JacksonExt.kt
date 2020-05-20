@@ -62,9 +62,9 @@ fun <T> Reader.fromJson(classOfT: Class<T>): T? {
  * @return an List of type T from the string. Returns `Collections#emptyList` if
  * `json` is `null`.
 </T> */
-fun <T> String.toList(): List<T>? {
+fun <T> String.toList(): List<T> {
     return try {
-        mapper.readValue(this, object : TypeReference<List<T>?>() {})
+        mapper.readValue(this, object : TypeReference<List<T>>() {})
     } catch (e: JsonProcessingException) {
         emptyList()
     }
@@ -77,9 +77,9 @@ fun <T> String.toList(): List<T>? {
  * @return an List of type T from the string. Returns `Collections#emptyList` if
  * `json` is `null`.
 </T> */
-fun <T> Reader.toList(): List<T>? {
+fun <T> Reader.toList(): List<T> {
     return try {
-        mapper.readValue(this, object : TypeReference<List<T>?>() {})
+        mapper.readValue(this, object : TypeReference<List<T>>() {})
     } catch (e: IOException) {
         emptyList()
     }

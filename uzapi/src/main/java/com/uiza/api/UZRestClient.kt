@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 class UZRestClient private constructor() {
 
     companion object {
-        private const val CONNECT_TIMEOUT_TIME = 20 //20s
+        private const val CONNECT_TIMEOUT_TIME: Long = 20L //20s
         val instance: UZRestClient by lazy { HOLDER.INSTANCE }
     }
 
@@ -39,8 +39,8 @@ class UZRestClient private constructor() {
 
     private fun provideHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
-                .readTimeout(CONNECT_TIMEOUT_TIME.toLong(), TimeUnit.SECONDS)
-                .connectTimeout(CONNECT_TIMEOUT_TIME.toLong(), TimeUnit.SECONDS)
+                .readTimeout(CONNECT_TIMEOUT_TIME, TimeUnit.SECONDS)
+                .connectTimeout(CONNECT_TIMEOUT_TIME, TimeUnit.SECONDS)
                 .addInterceptor(RestRequestInterceptor())
                 .retryOnConnectionFailure(true)
                 .addInterceptor(provideLogging()) // <-- this is the important line!
@@ -54,7 +54,7 @@ class UZRestClient private constructor() {
         return logging
     }
 
-    fun createLiveApi(): UZLiveApi {
-        return retrofit.create(UZLiveApi::class.java)
+    fun createApiService(): UZAPIService {
+        return retrofit.create(UZAPIService::class.java)
     }
 }

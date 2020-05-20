@@ -1,6 +1,6 @@
 @file:JvmName("UZUtils")
 
-package com.uiza.api.utils
+package com.uiza.api.exts
 
 import android.content.Context
 import android.content.pm.PackageManager
