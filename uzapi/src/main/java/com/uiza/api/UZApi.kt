@@ -3,9 +3,7 @@ package com.uiza.api
 import android.annotation.SuppressLint
 import android.content.Context
 import android.provider.Settings
-import android.webkit.URLUtil
 import com.uiza.api.exts.bind
-import com.uiza.api.exts.getMetaData
 import com.uiza.api.exts.toLiveInfo
 import com.uiza.api.models.UZLiveCounter
 import io.reactivex.disposables.Disposable
@@ -22,18 +20,18 @@ object UZApi {
             : String? = null
     private var deviceId: String? = null
 
+
+    @JvmStatic
+    fun init(context: Context, sdkVersionName: String) {
+        init(context, sdkVersionName, UZEnvironment.DEVELOPMENT)
+    }
+
     @SuppressLint("HardwareIds")
     @JvmStatic
-    fun init(context: Context, sdkName: String, sdkVersionName: String) {
+    fun init(context: Context, sdkVersionName: String, environment: UZEnvironment = UZEnvironment.DEVELOPMENT) {
         deviceId = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
-        sourceName = String.format("UZData/%s/%s", sdkName, sdkVersionName)
-        // https://development-api.uizadev.io
-        val baseLiveUrl: String? = context.getMetaData("uz_live_views_url")
-        if (URLUtil.isValidUrl(baseLiveUrl)) {
-            UZRestClient.instance.init(baseLiveUrl!!)
-        } else {
-            throw IllegalArgumentException("base live url is invalid")
-        }
+        sourceName = String.format("UZData/AndroidSDK/%s", sdkVersionName)
+        UZRestClient.instance.init(environment.getHost())
     }
 
     @JvmStatic
@@ -56,5 +54,6 @@ object UZApi {
         return UZRestClient.instance.createApiService()
                 .getLiveViewers(appId, entityId).bind(onNext, onError, onComplete)
     }
+
 
 }
