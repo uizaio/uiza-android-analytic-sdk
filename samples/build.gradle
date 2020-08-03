@@ -7,8 +7,8 @@ android {
         applicationId "com.uiza.apisdk"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 20080318
+        versionName "0.0.8"
     }
 
     buildTypes {

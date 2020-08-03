@@ -3,6 +3,7 @@ package io.uiza.apisdk;
 import android.app.Application;
 
 import com.uiza.api.UZApi;
+import com.uiza.api.UZEnvironment;
 
 import timber.log.Timber;
 
@@ -14,6 +15,6 @@ public class UZApplication extends Application {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
-        UZApi.init(getApplicationContext(), "SampleAPI", BuildConfig.VERSION_NAME);
+        UZApi.init(getApplicationContext(), BuildConfig.VERSION_NAME, UZEnvironment.PRODUCTION);
     }
 }
